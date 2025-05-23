@@ -35,9 +35,7 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public User(){
-
-    }
+    public User() {}
 
     
 

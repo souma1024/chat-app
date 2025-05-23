@@ -17,7 +17,7 @@ public class UserAuthenticationService {
 
     public Optional<User> getUserbyLoginId(UserSignupRequest request) {
         Optional<User> user = userRepository.findByLoginId(request.getLoginId());
-        if(!user.isPresent()) {
+        if (!user.isPresent()) {
             return null;
         }
         return user;

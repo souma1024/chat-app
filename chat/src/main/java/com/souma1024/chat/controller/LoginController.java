@@ -34,10 +34,10 @@ public class LoginController {
     public String authenticateUser(@ModelAttribute UserSignupRequest request, RedirectAttributes redirectAttributes) {
         Optional<User> user = userAuthenticationService.getUserbyLoginId(request);
         
-        if(user.isEmpty()) {
+        if (user.isEmpty()) {
             redirectAttributes.addFlashAttribute("failure", "アカウントが見つかりません");
             return "redirect:/login";
-        } else if(!passwordEncoder.matches(request.getPassword(), user.get().getPassword())) {
+        } else if (!passwordEncoder.matches(request.getPassword(), user.get().getPassword())) {
             redirectAttributes.addFlashAttribute("failure", "パスワードが違います");
             return "redirect:/login";
         } else {
