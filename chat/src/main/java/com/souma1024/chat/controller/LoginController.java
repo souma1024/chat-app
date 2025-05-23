@@ -33,8 +33,8 @@ public class LoginController {
     @PostMapping("/login-process")
     public String authenticateUser(@ModelAttribute UserSignupRequest request, RedirectAttributes redirectAttributes) {
         Optional<User> user = userAuthenticationService.getUserbyLoginId(request);
-        
-        if (user.isEmpty()) {
+    
+        if (user == null) {
             redirectAttributes.addFlashAttribute("failure", "アカウントが見つかりません");
             return "redirect:/login";
         } else if (!passwordEncoder.matches(request.getPassword(), user.get().getPassword())) {

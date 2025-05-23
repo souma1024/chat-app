@@ -3,16 +3,20 @@ package com.souma1024.chat.dto;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
+import com.souma1024.chat.validator.ValidLoginId;
+
 public class UserSignupRequest {
 
     @NotEmpty
     @Size(min = 8, message = "8桁以上入力してください")
+    @ValidLoginId
     private String loginId;
 
     @NotEmpty
     private String username;
 
     @NotEmpty
+    @Size(min = 8, message = "8桁以上入力してください")
     private String password;
 
     public String getLoginId () {

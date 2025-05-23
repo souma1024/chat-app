@@ -8,4 +8,5 @@ import com.souma1024.chat.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
     Optional<User> findByLoginId(String loginId);
+    Boolean existsByLoginId(String loginId);
 } 

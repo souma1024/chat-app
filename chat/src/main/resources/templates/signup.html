@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xlmns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,18 +13,25 @@
 <body>
   <div class="container">
     <div class="wrapper">
-      <form th:action="@{/signup}" method="post" class="form-signin">
+      <form th:action="@{/signup}" method="post" class="form-signin" th:object="${userSignupRequest}">
         <h3 class="form-signin-heading">Nice to meet you</h3>
         <h3 class="form-signin-heading">Please Sign Up</h3>
         <hr class="colorgraph">
-        <h6 th:if="${complete}" th:text="${complete}" class="text-primary">新規登録が完了しました！！</h6>
+
+        <h6 th:if="${successMessage}" th:text="${successMessage}" class="text-primary"></h6>
+
         <br>
         <h6>ユーザーIDを作成してください（英数字8文字以上）</h6>
-        <input type="text" name="loginId" placeholder="ユーザーID" class="form-control" required />
+        <input type="text" name="loginId" placeholder="ユーザーID" class="form-control" th:field="*{loginId}" />
+        <div th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" class="mb-2 text-danger"></div>
         <h6>ユーザー名を作成してください（ニックネーム）</h6>
-        <input type="text" name="username" placeholder="ユーザー名:ほかのユーザーに表示されます" class="form-control" required />
+        <input type="text" name="username" placeholder="ユーザー名:ほかのユーザーに表示されます" class="form-control" th:field="*{username}"/>          
+        <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="mb-2 text-danger"></div>
+
         <h6>パスワードを作成してください</h6>
-        <input type="password" name="password" placeholder="パスワード" class="form-control" required />
+        <input type="password" name="password" placeholder="パスワード" class="form-control" th:field="*{password}" />
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="mb-2 text-danger"></div>
+
         <button class="btn form-control btn-outline-primary" name="Submit" value="Signup" type="Submit">Sign Up</button>
         <p></p>
       </form>
