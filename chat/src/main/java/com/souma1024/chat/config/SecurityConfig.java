@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+
 @Configuration
 public class SecurityConfig {
 
@@ -19,7 +20,6 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.formLogin(login -> login
             .loginPage("/login")
-            .loginProcessingUrl("/dummy")
             .permitAll())
             .authorizeHttpRequests(authz -> authz
                 .requestMatchers("/css/**").permitAll() // CSSファイルは認証不要で使えるようにする
