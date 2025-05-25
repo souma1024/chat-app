@@ -1,8 +1,13 @@
 package com.souma1024.chat.controller;
 
+import java.util.Collections;
 import java.util.Optional;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +37,7 @@ public class LoginController {
 
     @PostMapping("/login-process")
     public String authenticateUser(@ModelAttribute UserSignupRequest request, RedirectAttributes redirectAttributes) {
+
         Optional<User> user = userAuthenticationService.getUserbyLoginId(request);
     
         if (user == null) {
@@ -40,9 +46,8 @@ public class LoginController {
         } else if (!passwordEncoder.matches(request.getPassword(), user.get().getPassword())) {
             redirectAttributes.addFlashAttribute("failure", "パスワードが違います");
             return "redirect:/login";
-        } else {
-            return "chat";
         }
+        return "chat";
     }
 
 }
