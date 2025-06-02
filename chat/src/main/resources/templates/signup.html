@@ -33,7 +33,6 @@
         <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="mb-2 text-danger"></div>
 
         <button class="btn form-control btn-outline-primary" name="Submit" value="Signup" type="Submit">Sign Up</button>
-        <p></p>
       </form>
       <a th:href="@{/}">Topページへ</a>
       <a th:href="@{/login}">ログインページへ</a>
