@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/")
             ).authorizeHttpRequests(authz -> authz
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()//静的ファイルはすべて許可
-                .requestMatchers("/", "/login", "signup").permitAll()
+                .requestMatchers("/", "/login", "/signup").permitAll()
                 .anyRequest().authenticated() //  他のURLはログイン後アクセス可能
         );
 
