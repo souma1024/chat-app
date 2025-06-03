@@ -3,15 +3,16 @@
  layout:decorate="~{layout/layout}">
 
 <head>
+    <link rel="stylesheet" th:href="@{/css/chat.css}">
 </head>
 <body>
-    <nav layout:fragment="header" class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark">
+    <nav layout:fragment="header" class="header navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">SpringSample</a>
+                <a class="navbar-brand chat-username pb-3" href="#" th:text="${username}">Host</a>
             </div>
             <form method="post" th:action="@{/logout}">
-                <button class="btn btn-link pull-right navbar-brand" type="submit">ログアウト</button>
+                <button class="btn btn-outline-light" type="submit">ログアウト</button>
             </form>
         </div>
     </nav>
