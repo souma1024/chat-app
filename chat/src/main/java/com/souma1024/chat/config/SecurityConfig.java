@@ -29,7 +29,9 @@ public class SecurityConfig {
             .usernameParameter("loginId")
             .permitAll()
             ).logout(logout -> logout
+                .logoutUrl("/logout") 
                 .logoutSuccessUrl("/")
+                .permitAll()
             ).authorizeHttpRequests(authz -> authz
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()//静的ファイルはすべて許可
                 .requestMatchers("/", "/login", "/signup").permitAll()

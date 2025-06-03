@@ -1,9 +1,11 @@
 .header {
-    padding-top: 1rem!important;
-    padding-bottom: .5rem!important;
-    margin-bottom: 1rem!important;
+    height: 90px;
 }
 
 .th-width {
     width: 200px;
+}
+
+.chat-username {
+    font-size: 40px;
 }

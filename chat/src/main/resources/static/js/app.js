@@ -46,13 +46,11 @@ function showGreeting(message) {
 }
 
 $(function () {
-    $("form").on('submit', function (e) {
+    $("#chat-form, #chat-message").on('submit', function (e) {
         e.preventDefault();
     });
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendMessage(); });
 });
-
-//setTimeout("connect()", 3000);
 
