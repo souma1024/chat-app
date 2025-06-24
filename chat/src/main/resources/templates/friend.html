@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <title>chatroom</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="wrapper">
+            <form th:action="@{/friend}" method="post" th:object="${friendRequest}">
+                <input type="text" placeholder="ルームID" th:field="*{roomCode}">
+                <input type="text" placeholder="フレンドID" th:field="*{friendId}">
+                <button type="submit" class="btn btn-primary">送信</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
