@@ -1,11 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorate="~{layout/layout}" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<title>チャットルーム</title>
+<link th:href="@{/css/chat.css}" rel="stylesheet">
+<script th:src="@{/js/app.js}" defer></script>
 </head>
+
 <body>
-    <h1>Success!!</h1>
+    <div th:include="fragments/header :: header" th:with="username='${username}'"></div>
+
+    <div layout:fragment="content">
+      <div id="main-content" class="container">
+          <div class="row">
+              <div class="col-md-6">
+                  <form id="chat-form" class="form-inline">
+                      <div class="form-group">
+                          <label for="connect">WebSocket connection:</label>
+                          <button id="connect" class="btn btn-primary mx-3" type="submit">Connect</button>
+                          <button id="disconnect" class="btn btn-danger" type="submit" disabled="disabled">Disconnect
+                          </button>
+                      </div>
+                  </form>
+              </div>
+              <div class="col-md-6 mt-2">
+                  <form id="chat-message" class="form-inline">
+                      <div class="form-group">
+                          <input type="hidden" id="name" class="form-control" th:value="${username}">
+                      </div>
+                      <div class="form-group">
+                          <label for="name">Message</label>
+                          <input type="text" id="message" class="form-control" placeholder="Hello">
+                      </div>
+                      <button id="send" class="btn btn-primary" type="submit">Send</button>
+                  </form>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  <table id="conversation" class="table table-striped">
+                      <thead>
+                      <tr>
+                          <th>Messages</th>
+                      </tr>
+                      </thead>
+                      <tbody id="greetings">
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+    </div>
 </body>
+
 </html>

@@ -13,21 +13,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "users")
-public class User {
-    
+@Table(name = "chatrooms")
+public class Chatroom {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "loginId", nullable = false, unique = true)
-    private String loginId;
-
-    @Column(name = "username", nullable = false)
-    private String username;
-
-    @Column(name = "password", nullable = false, unique = true)
-    private String password;
+    @Column(name = "roomCode", nullable = false, unique = true)
+    private String roomCode;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
@@ -36,7 +30,6 @@ public class User {
     private LocalDateTime updatedAt;
 
 
-    
     public Integer getId() {
         return id;
     }
@@ -45,28 +38,12 @@ public class User {
         this.id = id;
     } 
 
-    public String getLoginId() {
-        return loginId;
+    public String getRoomCode() {
+        return roomCode;
     }
 
-    public void setLoginId(String loginId) {
-        this.loginId = loginId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setRoomCode(String roomCode) {
+        this.roomCode = roomCode;
     }
 
     public LocalDateTime getCreatedAt() {
