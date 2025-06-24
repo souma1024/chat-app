@@ -15,18 +15,18 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "user_chatrooms")
-public class UserChatrooms {
+public class UserChatroom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne()
-    @JoinColumn(name = "loginId", referencedColumnName = "loginId")
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @ManyToOne()
-    @JoinColumn(name = "roomCode", referencedColumnName = "roomCode")
+    @ManyToOne
+    @JoinColumn(name = "chatroom_id", referencedColumnName = "id")
     private Chatroom chatroom;
 
     @CreationTimestamp
@@ -58,5 +58,5 @@ public class UserChatrooms {
     public void setChatroom(Chatroom chatroom) {
         this.chatroom = chatroom;
     }
-    
+
 }
